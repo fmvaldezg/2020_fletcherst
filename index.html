@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {box-sizing: border-box}
+    body {font-family: Verdana, sans-serif; margin: 0}
+
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 1726px; /* Set width to match the real size of the images */
+      position: relative;
+      margin: auto;
+    }
+
+    /* Slides */
+    .mySlides {
+      display: none;
+      position: relative; /* Create a stacking context for child elements */
+      text-align: center;
+    }
+
+    /* Image container */
+    .slide-image-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .slide-image {
+      max-width: 100%;
+      height: auto; /* Maintain aspect ratio */
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: auto;
+      padding: 10px; /* Adjust padding for smaller size */
+      color: white;
+      font-weight: bold;
+      font-size: 18px; /* Adjust font size */
+      transition: 0.6s ease;
+      border-radius: 0 5px 5px 0;
+      user-select: none;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 10;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Caption text */
+    .text {
+      color: #f5f4f2;
+      font-size: 12px; /* Adjust font size */
+      padding: 8px 16px; /* Adjust padding */
+      width: 100%;
+      text-align: center;
+      position: relative;
+      margin-top: 5px;
+    }
+
+    /* Dots */
+    .dot {
+      cursor: pointer;
+      height: 15px; /* Adjust size */
+      width: 15px; /* Adjust size */
+      margin: 0 4px; /* Adjust spacing */
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+      background-color: #717171;
+    }
+
+    /* Number text */
+    .numbertext {
+      position: absolute;
+      top: 10px; /* Align to the top */
+      left: 10px; /* Align to the left */
+      font-size: 12px; /* Adjust font size */
+      padding: 5px 10px; /* Adjust padding */
+      background-color: rgba(0, 0, 0, 0.5); /* Optional background for better visibility */
+      color: white;
+      border-radius: 5px;
+      z-index: 20; /* Ensure it is above the image */
+    }
+
+    /* Year text */
+    .yeartext {
+      position: absolute;
+      top: 10px; /* Align to the top */
+      right: 10px; /* Align to the right */
+      font-size: 30px; /* Adjust font size */
+      padding: 5px 10px; /* Adjust padding */
+      background-color: rgba(0, 0, 0, 0.5); /* Optional background for better visibility */
+      color: white;
+      border-radius: 5px;
+      z-index: 20; /* Ensure it is above the image */
+    }
+  </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 4</div>
+      <div class="yeartext">2015</div>
+      <div class="slide-image-container">
+        <img class="slide-image" src="https://raw.githubusercontent.com/fmvaldezg/Cyclomedia/main/2015.png" alt="2015 image">
+      </div>
+      <div class="text">Photo credit: @Cyclomedia, City of Philadelphia</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 4</div>
+      <div class="yeartext">2020</div>
+      <div class="slide-image-container">
+        <img class="slide-image" src="https://raw.githubusercontent.com/fmvaldezg/Cyclomedia/main/2020.png" alt="2020 image">
+      </div>
+      <div class="text">Photo credit: @Cyclomedia, City of Philadelphia</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 4</div>
+      <div class="yeartext">2023</div>
+      <div class="slide-image-container">
+        <img class="slide-image" src="https://raw.githubusercontent.com/fmvaldezg/Cyclomedia/main/2023.png" alt="2023 image">
+      </div>
+      <div class="text">Photo credit: @Cyclomedia, City of Philadelphia</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">4 / 4</div>
+      <div class="yeartext">2024</div>
+      <div class="slide-image-container">
+        <img class="slide-image" src="https://raw.githubusercontent.com/fmvaldezg/Cyclomedia/main/2024.png" alt="2024 image">
+      </div>
+      <div class="text">Photo credit: @Cyclomedia, City of Philadelphia</div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>  
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+</body>
+</html>
